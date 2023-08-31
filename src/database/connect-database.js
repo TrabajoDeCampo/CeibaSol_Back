@@ -1,15 +1,10 @@
-/*
-'mongodb+srv://Goster210:JuanJoseRincon99.123@cluster0.e4qmu1m.mongodb.net/?retryWrites=true&w=majority'
-'mongodb+srv://Jony:jony3lopez13@jony.0urqa.mongodb.net/AppReservas?retryWrites=true&w=majority'
-'mongodb+srv://Goster210:JuanJoseRincon99.123@curdaudi.26oehas.mongodb.net/?retryWrites=true&w=majority'
-*/
 const mongoose = require('mongoose');
-/*
-datos locales*/
-
-
-
-mongoose.connect('mongodb://localhost/CeibaSol', { useNewUrlParser: true })
+/*datos locales DB*/
+const ruteBD ='mongodb://localhost/CeibaSol'
+/* datos nube DB (Cluster)*/
+//const ruteBD ='mongodb+srv://CeibaSol:CeibaSol123@ceibasol.zumhbwd.mongodb.net/?retryWrites=true&w=majority'
+mongoose.set("strictQuery", false);
+mongoose.connect(ruteBD, { useNewUrlParser: true })
     .then(() => console.log('Conexion correcta BD'))
     .catch((err) => console.log(`ERROR to connect : ${err.message}`));
 
@@ -22,6 +17,4 @@ mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
     .catch((err) => console.log(`ERROR to connect : ${err.message}`));
 
     module.exports = mongoose;
-
-
 */
