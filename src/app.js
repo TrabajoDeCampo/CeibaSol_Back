@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 //conexion con la base de datos
-//require('./database/connect-database');
+require('./database/connect-database');
 
 //middleware
 app.use(express.json());
@@ -11,6 +11,8 @@ app.use(cors());
 //settings
 app.set('port', process.env.PORT || 5000);
 //routas o endpoints
+//endpoints ADMINISTRADOR
+app.use('/api/admin',require('./routes/admin'))
 
 
 app.listen(app.get('port'), () => {
