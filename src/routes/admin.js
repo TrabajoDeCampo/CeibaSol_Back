@@ -1,8 +1,11 @@
 const {Router} = require('express');
 const router = Router();
-const {signIn, signOut } = require('../controller/admin');
+const {signIn, signOut, crearUsuario } = require('../controller/admin');
 const { authenticateToken } = require("../helper/jwt");
 
+
+//crear un usuario
+router.post('/crearUsuario',[authenticateToken], crearUsuario );
 
 //inicio de sesion
 router.post('/signIn', signIn );
