@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 /*datos locales DB*/
-const ruteBD ='mongodb://localhost/CeibaSol'
+//const ruteBD ='mongodb://localhost/CeibaSol'
 /* datos nube DB (Cluster)*/
-//const ruteBD ='mongodb+srv://CeibaSol:CeibaSol123@ceibasol.zumhbwd.mongodb.net/?retryWrites=true&w=majority'
+const ruteBD ='mongodb+srv://CeibaSol:CeibaSol123@ceibasol.zumhbwd.mongodb.net/?retryWrites=true&w=majority'
 mongoose.set("strictQuery", false);
 mongoose.connect(ruteBD, { useNewUrlParser: true })
     .then(() => console.log('Conexion correcta BD'))

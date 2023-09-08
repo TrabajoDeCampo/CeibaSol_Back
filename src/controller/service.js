@@ -44,12 +44,28 @@ const listarServicios = async (req, res) => {
   }
 };
 
-const eliminarServicio = async (req, res) => {
-  
-  const { nameService } = req.body;
+const verServicio = async (req, res) => {
+  const { serviceId } = req.query;
 
   try {
-    const deleteItem = await service.findOneAndDelete({ nameService });
+    const servicio = await service.findById({ _id: serviceId });
+    return res.status(200).json({
+      succes: true,
+      servicio,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      succes: false,
+      error: error.message,
+    });
+  }
+};
+
+const eliminarServicio = async (req, res) => {
+  const { serviceId } = req.params;
+
+  try {
+    const deleteItem = await service.findByIdAndRemove({ _id: serviceId });
 
     return res.status(200).json({
       succes: true,
@@ -64,16 +80,14 @@ const eliminarServicio = async (req, res) => {
 };
 
 const actualizarServicio = async (req, res) => {
-
-  const { nameService, subService, linkImg } = req.body;
+  const { serviceId, nameService, subService, linkImg } = req.body;
 
   try {
-
-    let find = await service.findOne({ nameService });
+    let find = await service.findById({ _id: serviceId });
 
     if (find) {
       const servicioUpdate = await service.findOneAndUpdate(
-        { nameService },
+        { _id: serviceId },
         req.body,
         {
           new: true,
@@ -99,6 +113,7 @@ const actualizarServicio = async (req, res) => {
 module.exports = {
   crearServicio,
   listarServicios,
+  verServicio,
   eliminarServicio,
   actualizarServicio,
 };

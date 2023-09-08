@@ -9,7 +9,7 @@ function generateToken(userName, password, role) {
     jwt.sign(
       payload,
       config.jwtSecret,
-      { expiresIn: "5m" },
+      { expiresIn: "10m" },
 
       (err, token) => {
         if (err) {

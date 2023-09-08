@@ -1,15 +1,18 @@
-const {Router} = require('express');
+const { Router } = require('express');
 const router = Router();
+const { authenticateToken } = require("../helper/jwt");
 
-const {crearTrabajo, listarTrabajo, eliminarTrabajo, actualizarTrabajo} = require('../controller/works') 
+const { crearTrabajo, listarTrabajos, verTrabajo, eliminarTrabajo, actualizarTrabajo } = require('../controller/works')
 
 //crear trabajo relizado
-router.post('/crearServicio', crearTrabajo);
+router.post('/crearTrabajo', [authenticateToken], crearTrabajo);
 //listar trabajo relizado
-router.get('/listarServicios', listarTrabajo);
+router.get('/listarTrabajos', listarTrabajos);
+//ver un trabajo realizado
+router.get('/verTrabajo', verTrabajo);
 //eliminar trabajo relizado
-router.delete('/eliminarServicio', eliminarTrabajo);
+router.delete('/eliminarTrabajo/:workId', [authenticateToken], eliminarTrabajo);
 //actualizar trabajo relizado
-router.put('/actualizarServicio', actualizarTrabajo);
+router.put('/actualizarTrabajo', [authenticateToken], actualizarTrabajo);
 
 module.exports = router;
