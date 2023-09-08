@@ -14,7 +14,12 @@ app.set('port', process.env.PORT || 5000);
 
 //endpoints ADMINISTRADOR
 app.use('/api/admin',require('./routes/admin'))
-
+//endpoints Servicios
+app.use('/api/services',require('./routes/service'));
+//endpoints trabajos Realizados
+app.use('/api/works',require('./routes/works'));
+//endpoints contactos
+app.use('/api/contact',require('./routes/contact'));
 
 
 app.listen(app.get('port'), () => {

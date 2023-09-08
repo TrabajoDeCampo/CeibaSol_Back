@@ -1,3 +1,4 @@
+const works = require("../models/works");
 
 const crearTrabajo = async (req, res) =>{}
 
